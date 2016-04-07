@@ -199,6 +199,27 @@ sudo chown -R www-data. /var/www/html/cake2/rd_cake/webroot/img/dynamic_details
 sudo chown -R www-data. /var/www/html/cake2/rd_cake/webroot/img/dynamic_photos
 sudo chown -R www-data. /var/www/html/cake2/rd_cake/webroot/files/imagecache
 ```
+3. Now we need to edit a few files for the log file viewer to control radiusd
+```
+sudo vim /usr/share/nginx/html/cake2/rd_cake/Setup/Scripts/radmin_wrapper.pl
+```
+  * We are using radiusd, not freeradius. Change so this sections look slike this:
+  ```
+  
+#___ Start ____
+if($arg1 eq 'start'){
+    #system("/etc/init.d/radiusd start");
+    system("service radiusd start");
+    #system("/etc/init.d/freeradius start");
+}
+
+#___ Stop ____
+if($arg1 eq 'stop'){
+    #system("/etc/init.d/radiusd stop");
+    system("service radiusd stop");
+    #system("/etc/init.d/freeradius stop");
+}
+  ```
 
 ### The database
 1. Create the following blank databases:
@@ -499,7 +520,7 @@ cd ../
 sudo dpkg -i coova-chilli_1.3.0_armhf.deb
 ```
 
-## Configure
+### Configure
 * Edit the default file
 ```
 sudo vim /etc/default/chilli
@@ -584,7 +605,7 @@ iptables -I INPUT -i tun0 -p tcp -m tcp --dport 8000 --dst 10.1.0.1 -j ACCEPT
 * Use the following `/etc/chilli/ipdown.sh` file as a guideline
 ```
 UAM server specified as 10.1.0.1
-iptables -D INPUT -i tun0 -p tcp -m tcp --dport 80 --dst 10.1.0.1 -j ACCEPT
+iptables -D INPUT -i tun0 -instp tcp -m tcp --dport 80 --dst 10.1.0.1 -j ACCEPT
 iptables -D INPUT -i tun0 -p tcp -m tcp --dport 443 --dst 10.1.0.1 -j ACCEPT
 iptables -D INPUT -i tun0 -p tcp -m tcp --dport 22 --dst 10.1.0.1 -j ACCEPT
 iptables -D INPUT -i tun0 -p tcp -m tcp --dport 8000 --dst 10.1.0.1 -j ACCEPT
@@ -592,21 +613,22 @@ iptables -D INPUT -i tun0 -p tcp -m tcp --dport 8000 --dst 10.1.0.1 -j ACCEPT
 
 ## Add NAT support
 __Warning!__ Failing to do this step will leave you with a broken system.
+
 * Edit the `/etc/init.d/chilli` file and add the following in this section:
-```
-test ${HS_ADMINTERVAL:-0} -gt 0 && {
-    (crontab -l 2>&- | grep -v $0
-        echo "*/$HS_ADMINTERVAL * * * * $0 radconfig"
-        ) | crontab - 2>&-
-}
-
-#NAT mod
-iptables -F POSTROUTING -t nat
-iptables -I POSTROUTING -t nat -o $HS_WANIF -j MASQUERADE
-#END NAT mod
-
-ifconfig $HS_LANIF 0.0.0.0
-```
+        ```
+        test ${HS_ADMINTERVAL:-0} -gt 0 && {
+            (crontab -l 2>&- | grep -v $0
+                echo "*/$HS_ADMINTERVAL * * * * $0 radconfig"
+                ) | crontab - 2>&-
+        }
+        
+        #NAT mod
+        iptables -F POSTROUTING -t nat
+        iptables -I POSTROUTING -t nat -o $HS_WANIF -j MASQUERADE
+        #END NAT mod
+        
+        ifconfig $HS_LANIF 0.0.0.0
+        ```
 * Test things out
 ```
 sudo systemctl daemon-reload
@@ -679,13 +701,16 @@ ignore_broadcast_ssid=1
 __Note!__ Please do message me if you find anything a-miss, or have suggestions!
 
 ## Cleanup
-We want the Pi image to be small! So clean up
+We want the Pi image to be small! So clean up. __If__ you don't intend to develope on here again.
+* Remove the packages downloaded and installed.
 ```
 sudo rm /var/www/html/2.8.3.tar.gz
 sudo rm /var/www/html/rd/ext-6-sencha_cmd.tar.gz
 sudo rm /home/pi/freeradius-server-3.0.11.tar
 sudo rm /etc/freeradius-3-radiusdesk.tar.gz
-
-sudo apt-get auto-remove
+```
+* Remove the things we used to build with that we no longer need. 
+```
+sudo apt-get autoremove debhelper libtalloc-dev libssl-dev libmysqlclient-dev libperl-dev g++ vim 
 
 ```
