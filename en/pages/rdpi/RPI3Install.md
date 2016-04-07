@@ -714,5 +714,4 @@ sudo rm /etc/freeradius-3-radiusdesk.tar.gz
 * Remove the things we used to build with that we no longer need. 
 ```
 sudo apt-get autoremove debhelper libtalloc-dev libssl-dev libmysqlclient-dev libperl-dev g++ vim 
-
 ```
