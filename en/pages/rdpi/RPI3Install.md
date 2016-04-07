@@ -206,7 +206,7 @@ __warning!__ The below is not working yet. I'm working on it!
 ```
 sudo vim /usr/share/nginx/html/cake2/rd_cake/Setup/Scripts/radmin_wrapper.pl
 ```
-  * We are using radiusd, not freeradius. Change so this sections look slike this:
+  * We are using radiusd, not freeradius. Change so this section looks like this:
   ```
         #___ Start ____
         if($arg1 eq 'start'){
