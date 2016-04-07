@@ -13,18 +13,16 @@
 
 * I assume you are working from a clean install of [__Rasbian Lite__](https://www.raspberrypi.org/downloads/raspbian/)
 
-* I often include `sudo service <service> status` in the wiki, this should output `active (running)`.
+* I often include `sudo service <service> status` in the wiki, this should output `active (running)`, and some other things.
 
 ## Install Nginx (LEMP stack)
 __Note:__ [Reference, and great source of knowledge](http://www.radiusdesk.com/getting_started/install_ubuntu_nginx)
 
 1. Install all the things
 Nginx, php5-fpm, mysql-server, mysql-client, php5-mysql, php5-xcache, php5-cli, php5-gd, php5-curl, subversion, vim
-
 ```
 sudo apt-get install nginx mysql-server mysql-client php5-mysql php5-xcache php5-cli php5-gd php5-curl subversion vim php5-fpm
 ```
-
 2. Start and stop Nginx to check that there are no issues, there shouldn't be.
 ```
 sudo service nginx stop
@@ -52,25 +50,20 @@ sudo service php5-fpm status
 
 ## Modify Nginx
 1. Copy the default confi file to a new one
-```bash
+```
 cd /etc/nginx/sites-available/
-
 sudo cp default default.orig
 ```
-
 2. Edit the new config file
 ```
 sudo vim default
 ```
-
 * Add *index.php* to this line:
 ```
 # Add index.php to the list if you are using PHP
 index index.php index.html index.htm index.nginx-debian.html;
 ```
-
 * Activate PHP precessing by uncommenting this this section. Note that we use the UNIX socket:
-
 ```
 # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
 #
@@ -83,25 +76,21 @@ location ~ \.php$ {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
 }
 ```
-
 * Enable the hiding of *.htaccess* files, just in case
 ```
 location ~ /\.ht {
         deny all;
 }
 ```
-
 * Reload `nginx`
 ```
 sudo service nginx reload
 sudo service nginx status
 ```
-
 * Create a test *.php* script
 ```
 sudo vim /var/www/html/test.php
 ```
-
 * Add the below
 ```
 <?php
