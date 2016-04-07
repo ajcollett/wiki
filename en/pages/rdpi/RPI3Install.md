@@ -205,20 +205,19 @@ sudo vim /usr/share/nginx/html/cake2/rd_cake/Setup/Scripts/radmin_wrapper.pl
 ```
   * We are using radiusd, not freeradius. Change so this sections look slike this:
   ```
-  
-#___ Start ____
-if($arg1 eq 'start'){
-    #system("/etc/init.d/radiusd start");
-    system("service radiusd start");
-    #system("/etc/init.d/freeradius start");
-}
-
-#___ Stop ____
-if($arg1 eq 'stop'){
-    #system("/etc/init.d/radiusd stop");
-    system("service radiusd stop");
-    #system("/etc/init.d/freeradius stop");
-}
+        #___ Start ____
+        if($arg1 eq 'start'){
+            #system("/etc/init.d/radiusd start");
+            system("service radiusd start");
+            #system("/etc/init.d/freeradius start");
+        }
+        
+        #___ Stop ____
+        if($arg1 eq 'stop'){
+            #system("/etc/init.d/radiusd stop");
+            system("service radiusd stop");
+            #system("/etc/init.d/freeradius stop");
+        }
   ```
 
 ### The database
