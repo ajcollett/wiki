@@ -4,4 +4,4 @@ This is a place for a collection of MD wiki's I've either written or put togethe
 
 ## RADIUSDesk On Pi
 
- * RPI3-Debian install
+ * [RPI3-Debian install](page/RADIUSDeskOnPi/PRI3Install)
