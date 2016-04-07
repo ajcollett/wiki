@@ -50,7 +50,7 @@ sudo service php5-fpm status
 
 ## Modify Nginx
 1. Copy the default confi file to a new one
-```
+```bash
 cd /etc/nginx/sites-available/
 sudo cp default default.orig
 ```
@@ -83,7 +83,7 @@ location ~ /\.ht {
 }
 ```
 * Reload `nginx`
-```
+```bash
 sudo service nginx reload
 sudo service nginx status
 ```
