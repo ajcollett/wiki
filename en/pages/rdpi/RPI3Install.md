@@ -704,6 +704,7 @@ __Note!__ Please do message me if you find anything a-miss, or have suggestions!
 
 ## Cleanup
 We want the Pi image to be small! So clean up. __If__ you don't intend to develope on here again.
+
 * Remove the packages downloaded and installed.
 ```
 sudo rm /var/www/html/2.8.3.tar.gz
