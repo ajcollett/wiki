@@ -698,6 +698,16 @@ ignore_broadcast_ssid=1
 #wpa_pairwise=TKIP
 #rsn_pairwise=CCMP
 ```
+* You will also need to deny `wlan0` in dhcpcd.config, as it is active on all interfaces by default
+```
+sudo vim /etc/dhcpcd.conf
+```
+* Add this to the bottom
+```
+# Deny wlan0, so that we can create a hotspot
+denyinterfaces wlan0
+```
+
 * Now reboot and try connect to your new hotspot!
 
 __Note!__ Please do message me if you find anything a-miss, or have suggestions!
