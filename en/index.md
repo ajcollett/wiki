@@ -5,3 +5,6 @@ This is a place for a collection of MD wiki's I've either written or put togethe
 ## RADIUSDesk On Pi
 
  * [RPI3-Debian install](pages/rdpi/RPI3Install.md)
+
+## Useful links for image manipulation
+ * [Resizing partitions in .img files](http://softwarebakery.com/shrinking-images-on-linux)
