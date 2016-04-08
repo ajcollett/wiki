@@ -289,6 +289,16 @@ sudo tar -xzvf ext-6-sencha_cmd.tar.gz
 3. Now try to log in on the following URL with username root and password admin:
 > http://ip_of_pi/rd/build/production/Rd/index.html
 
+## Webroot directory
+There seems to be a lot of places where `/var/www/html` is expected to be `/usr/share/nginx/html`. Let's fix this in a temporary way till the dust settles.
+```
+sudo rmdir /usr/share/nginx/html/index.html
+sudo rmdir /usr/share/nginx/html
+sudo ln -s /var/www/html /usr/share/nginx/html
+```
+If you encounter any error with the above, make sure you haven't got files in there already!
+If you do not do the above, there are things in the viewer that will not work.
+
 ## Cron scripts
 * __RADIUSdesk__ requires a few scripts to run periodically in order to maintain a healthy and working system.
 ```
