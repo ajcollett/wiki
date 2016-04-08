@@ -384,7 +384,6 @@ sudo vim /etc/freeradius/sites-enabled/dynamic-clients
   ```
 * Change the name of the program from `freeradius` to `radiusd`:
 ```
-
 #  name of the running server.  See also the "-n" command-line option.
 name = radiusd
 ```
