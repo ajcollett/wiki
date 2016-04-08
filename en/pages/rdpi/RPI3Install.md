@@ -199,9 +199,6 @@ sudo chown -R www-data. /var/www/html/cake2/rd_cake/webroot/img/dynamic_details
 sudo chown -R www-data. /var/www/html/cake2/rd_cake/webroot/img/dynamic_photos
 sudo chown -R www-data. /var/www/html/cake2/rd_cake/webroot/files/imagecache
 ```
-
-__warning!__ The below is not working yet. I'm working on it!
-
 3. Now we need to edit a few files for the log file viewer to control radiusd
 ```
 sudo vim /usr/share/nginx/html/cake2/rd_cake/Setup/Scripts/radmin_wrapper.pl
@@ -387,6 +384,7 @@ sudo vim /etc/freeradius/sites-enabled/dynamic-clients
   ```
 * Change the name of the program from `freeradius` to `radiusd`:
 ```
+
 #  name of the running server.  See also the "-n" command-line option.
 name = radiusd
 ```
