@@ -7,13 +7,12 @@
 
 * The Wifi will be setup as a wifi network, RPI3 by default
 
-* None of the default settings will be changed, but I will try point out the things that should. Like the raspberry pi root password.
-
 * If you want indepth explanations on some of the steps, have a look at where I got the wiki parts from, in each section.
 
 * I assume you are working from a clean install of [__Rasbian Lite__](https://www.raspberrypi.org/downloads/raspbian/)
 
 * I often include `sudo service <service> status` in the wiki, this should output `active (running)`, and some other things.
+* [Here](pages/rdpi/RPI3FinalSteps.md) are some important security steps.
 
 * Make sure you expand the file system! This is going to take lots of space.
 
@@ -732,4 +731,8 @@ sudo rm /etc/freeradius-3-radiusdesk.tar.gz
 * Remove the things we used to build with that we no longer need. 
 ```
 sudo apt-get autoremove debhelper libtalloc-dev libssl-dev libmysqlclient-dev libperl-dev g++ vim 
+sudo apt-get autoremove
 ```
+
+## Next steps
+[Go back](/) to the main page to see what else should/could be done. Note the final setup!
