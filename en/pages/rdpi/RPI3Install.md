@@ -735,4 +735,4 @@ sudo apt-get autoremove
 ```
 
 ## Next steps
-[Go back](/) to the main page to see what else should/could be done. Note the final setup!
+[Go back](/wiki) to the main page to see what else should/could be done. Note the final setup!
