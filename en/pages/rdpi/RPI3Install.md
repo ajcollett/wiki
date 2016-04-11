@@ -12,7 +12,7 @@
 * I assume you are working from a clean install of [__Rasbian Lite__](https://www.raspberrypi.org/downloads/raspbian/)
 
 * I often include `sudo service <service> status` in the wiki, this should output `active (running)`, and some other things.
-* [Here](pages/rdpi/RPI3FinalSteps.md) are some important security steps.
+* [Here](RPI3FinalSteps.md) are some important security steps.
 
 * Make sure you expand the file system! This is going to take lots of space.
 
