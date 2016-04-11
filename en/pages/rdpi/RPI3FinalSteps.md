@@ -17,17 +17,21 @@ This section is not very exhaustive. There is much info on the main RADIUSDesk s
 > W. I. P.
 
 ## Use PPPOE to initiate connection (Optional)
-If you have a modem and the Pi is the only device connected to the internet, then you could use the Pi to initiate the ADSL PPPOE connection. This enables the Pi to have a little more control over the internet connection, and removes some of the modems "optimizations"/fiddelry that sometimes makes things... weird to deal with. It also has the added benifit that you can secure the connection a little better, as modems tend to have exploits and backdoors, either built in or discovered. Though, you have to __DO THIS PROPERLY__ if you are going to do it at all. 
+If you have a modem and the Pi is the only device connected to the Internet, then you could use the Pi to initiate the ADSL PPPOE connection. This enables the Pi to have a little more control over the Internet connection, and removes some of the modems "optimizations"/fiddlery that sometimes makes things... weird to deal with. It also has the added benefit that you can secure the connection a little better, as modems tend to have exploits and back-doors, either built in or discovered. Though, you have to __DO THIS PROPERLY__ if you are going to do it at all, and expect it to do a better job than your router.
 
-__WARNING!__ If you do this step, you have to setup a firewal, and maybe change the `SSH` port. Otherwise, it probably won't be long befor your little Pi becomes a slave in a bot-net. 
-
-> W. I. P.
-
-## Install and setup a firewall
-
-> W. I. P.
-
-## Install QOS systems
+__WARNING!__ If you do this step:
+  1. You have to setup a firewall,
+  2. Change your password to something very secure,
+  3. Otherwise disable passwords completely and use public/private key pairs
+  4. And maybe change the `SSH` port. 
+  Otherwise, it probably won't be long before your little Pi becomes a slave in a bot-net.
 
 > W. I. P.
 
+## Install and setup a firewall (Optional but recommended)
+
+> W. I. P.
+
+## Install QOS systems (Optional)
+
+> W. I. P.
